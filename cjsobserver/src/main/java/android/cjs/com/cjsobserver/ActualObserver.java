@@ -7,7 +7,7 @@ import android.os.Looper;
 import java.lang.ref.WeakReference;
 
 /**
- * 描述:Activity观察者
+ * 描述:观察者的具体实现
  * <p>
  * 作者:陈俊森
  * 创建时间:2017年12月22日 10:11
@@ -15,13 +15,13 @@ import java.lang.ref.WeakReference;
  *
  * @version 1.0
  */
-public class ActivityObserver implements Observer {
+public class ActualObserver implements Observer {
     private Handler mObserverHandler;
     private WeakReference<ObserverableInterface> mActivityV2WeakReference;
 
-    public ActivityObserver(ObserverableInterface activity) {
+    public ActualObserver(ObserverableInterface observerableInterface) {
         mObserverHandler = new Handler(Looper.getMainLooper());
-        mActivityV2WeakReference = new WeakReference<ObserverableInterface>(activity);
+        mActivityV2WeakReference = new WeakReference<ObserverableInterface>(observerableInterface);
     }
 
     @Override
@@ -40,9 +40,9 @@ public class ActivityObserver implements Observer {
 
         @Override
         public void run() {
-            ObserverableInterface activity = mActivityV2WeakReference.get();
-            if (activity != null) {
-                activity.onNotifyObserverChanged(command, params);
+            ObserverableInterface observerableInterface = mActivityV2WeakReference.get();
+            if (observerableInterface != null) {
+                observerableInterface.onNotifyObserverChanged(command, params);
             }
         }
     }
@@ -51,9 +51,9 @@ public class ActivityObserver implements Observer {
      * 观察者模式构建，主要操作为注册指令集
      */
     public void onCreate() {
-        ObserverableInterface activity = mActivityV2WeakReference.get();
-        if (activity != null) {
-            String[] setObserverCommands = activity.setObserverCommands();
+        ObserverableInterface observerableInterface = mActivityV2WeakReference.get();
+        if (observerableInterface != null) {
+            String[] setObserverCommands = observerableInterface.setObserverCommands();
             if (setObserverCommands != null) {
                 for (String command : setObserverCommands) {
                     ObserverController.getInstance().registerObserver(command, this);
@@ -66,9 +66,9 @@ public class ActivityObserver implements Observer {
      * 观察者模式销毁，主要操作为注销指令集
      */
     public void onDestroy() {
-        ObserverableInterface activity = mActivityV2WeakReference.get();
-        if (activity != null) {
-            String[] setObserverCommands = activity.setObserverCommands();
+        ObserverableInterface observerableInterface = mActivityV2WeakReference.get();
+        if (observerableInterface != null) {
+            String[] setObserverCommands = observerableInterface.setObserverCommands();
             if (setObserverCommands != null) {
                 for (String command : setObserverCommands) {
                     ObserverController.getInstance().unRegisterObserver(command, this);

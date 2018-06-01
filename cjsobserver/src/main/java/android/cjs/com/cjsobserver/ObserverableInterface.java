@@ -3,7 +3,7 @@ package android.cjs.com.cjsobserver;
 import android.os.Bundle;
 
 /**
- * 描述:具体被观察者需要交互的接口。该接口的设计初衷是解决单继承{@link ObserverActivityV2}的问题，将具体的
+ * 描述:具体被观察者需要交互的接口。该接口的设计初衷是解决单继承{@link ObserverActivity}的问题，将具体的
  * 注册监听操作与基类分离，可以集成到自己的基类中
  * <p>
  * 作者:陈俊森

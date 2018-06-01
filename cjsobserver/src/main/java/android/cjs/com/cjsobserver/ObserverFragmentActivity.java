@@ -13,23 +13,23 @@ import android.support.v4.app.FragmentActivity;
  *
  * @version 1.0
  */
-public abstract class ObserverFragmentObserverableV2 extends FragmentActivity implements ObserverableInterface {
-    private ActivityObserver mActivityObserver;
+public abstract class ObserverFragmentActivity extends FragmentActivity implements ObserverableInterface {
+    private ActualObserver mActualObserver;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActivityObserver = new ActivityObserver(this);
-        mActivityObserver.onCreate();
+        mActualObserver = new ActualObserver(this);
+        mActualObserver.onCreate();
     }
 
     @Override
     protected void onDestroy() {
-        mActivityObserver.onDestroy();
+        mActualObserver.onDestroy();
         super.onDestroy();
     }
 
-    public ActivityObserver getActivityObserver() {
-        return mActivityObserver;
+    public Observer getObserver() {
+        return mActualObserver;
     }
 }
