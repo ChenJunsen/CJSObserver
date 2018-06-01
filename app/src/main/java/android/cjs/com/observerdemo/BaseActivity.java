@@ -1,15 +1,16 @@
 package android.cjs.com.observerdemo;
 
 import android.app.Activity;
-import android.cjs.com.cjsobserver.ObserverActivityV2;
-import android.cjs.com.cjsobserver.ObserverFragmentObserverableV2;
+import android.cjs.com.cjsobserver.ObserverActivity;
+import android.cjs.com.cjsobserver.ObserverAppcompatActivity;
+import android.cjs.com.cjsobserver.ObserverFragmentActivity;
 import android.cjs.com.cjsobserver.ObserverableInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
 /**
- * 描述:应用基类，库文件提供{@link ObserverActivityV2},{@link android.cjs.com.cjsobserver.ObserverAppcompatActivityV2}和{@link ObserverFragmentObserverableV2}
+ * 描述:应用基类，库文件提供{@link ObserverActivity},{@link ObserverAppcompatActivity}和{@link ObserverFragmentActivity}
  * 三种基类的使用，可以根据需要集成这三种中的一种。如果都不满足要求，可以实现{@link ObserverableInterface},仿照那三种类的形式，集成到自己的基类中使用
  * <p>
  * 作者:陈俊森
@@ -18,7 +19,7 @@ import android.util.Log;
  *
  * @version 1.0
  */
-public abstract class BaseActivity extends ObserverActivityV2 {
+public abstract class BaseActivity extends ObserverActivity {
     static final String TAG = "CJSObserver";
 
     @Override

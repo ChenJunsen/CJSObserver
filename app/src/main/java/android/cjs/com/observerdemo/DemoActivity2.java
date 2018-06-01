@@ -10,7 +10,7 @@ public class DemoActivity2 extends BaseDemoActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //举个栗子，本来DemoActivity2是已经有销毁页面的指令的，现在调用该方法手动实现取消该页面的该指令
-        ObserverController.getInstance().unRegisterObserver(Common.Notification.DESTROY_PAGE,getActivityObserver());
+        ObserverController.getInstance().unRegisterObserver(Common.Notification.DESTROY_PAGE, getObserver());
     }
 
     @Override
